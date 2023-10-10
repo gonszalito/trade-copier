@@ -1,0 +1,307 @@
+root {
+    --light: #d8dbe0;
+    --dark: #28292c;
+    --link: rgb(27, 129, 112);
+    --link-hover: rgb(24, 94, 82);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:'Trebuchet MS',  sans-serif;
+    font-size: 16px;
+    /* background-color: #1c2227; */
+}
+
+form > * {
+    margin: 0.5rem;
+}
+
+.form {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:bisque ;
+    padding: 1rem;
+}
+
+
+.form__symbol select {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    font-size: 1rem;
+}
+
+.form__option {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__buy {
+    flex: 1; /* Distribute available space equally between the two labels */
+    display: flex;
+    flex-direction: row; /* Stack elements vertically within each label */
+    align-items: center; /* Center-align elements horizontally within each label */
+    justify-content: flex-end;
+}
+
+.card__sell {
+    flex: 1; 
+    display: flex;
+    flex-direction: row; /* Stack elements vertically within each label */
+    align-items: center; /* Center-align elements horizontally within each label */
+    justify-content: flex-start;
+}
+
+
+.buy__input {
+    border: 2px solid #0376bc; 
+    width: 95%; 
+    height: 3rem; 
+    display: inline-block;
+    padding-bottom: 1rem;
+
+    /* padding: 5px; 
+    padding-bottom: 10px;
+    padding-right: 10px;  */
+
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.sell__input {
+    border: 2px solid #d84027;
+    width: 95%;
+    height: 3rem;
+    display: inline-block; 
+
+    padding-bottom: 1rem;
+    /* padding: 5px;
+    padding-bottom: 10px;
+    padding-right: 10px;  */
+    cursor: pointer;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.sell__input span,
+.buy__input span {
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.card__buy input[type="radio"],
+.card__sell input[type="radio"] {
+    display: none;
+}
+
+
+.option__sell:checked + .sell__input{
+    background-color: #d84027;    
+    color: white;
+}
+
+.option__buy:checked + .buy__input{
+    background-color: #0376bc;   
+    color: white; 
+}
+
+.form__lot {
+    width: 100%;
+    background-color: #f5f5dc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.form__lot input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    font-size: 1rem;
+    margin: 5px;
+    margin-left: 1rem;
+    font-size: 1rem;
+    width: auto;
+    /* background-color: beige; */
+}
+
+.form__lot input[type="number"]::-webkit-inner-spin-button,
+.form__lot input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0; /* Optional: Remove any remaining margin */
+}
+
+.lot__control {
+    /* background-color: red; */
+    /* margin: 5px; */
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.lot__control button {
+    border: 1px solid #000;
+    background-color: transparent;
+    width: 1.5rem; /* Set a fixed width for the buttons */
+    height: 1.5rem; /* Set a fixed height for the buttons */
+    /* padding: 5px; */
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.lot__control button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.form__lot:hover {
+    background-color: rgb(240, 240, 215);
+}
+
+.toggle__container {
+    position: relative;
+    width: 1.5rem;
+    
+}
+
+.toggle__label {
+    position: relative;
+    width: 1.5rem;
+    height: 1rem;
+    background-color: transparent;
+    border-radius: 50px;
+    cursor: pointer;
+    /* border: 2px solid rgb(142, 146, 153); */
+    display: flex;
+    /* justify-content: flex-start; */
+}
+
+.toggle__input {
+    display: none;
+}
+
+.slider {
+    /* position: relative; */
+    left: 10px;
+    position: absolute;
+    background-color: transparent;
+    border: 2px solid rgb(142, 146, 153);
+
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 50px;
+    /* transition: 0.3s; */
+  }
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: auto;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background-color: rgb(142, 146, 153);
+    transition: 0.3s;
+  }
+
+.toggle__label input:checked  ~ .slider::before {    
+    left: auto;
+    right: 2px;
+    background-color: #ffcf01;
+    box-shadow: none;
+    transition: right 0.3s ease; 
+}
+
+.toggle__label input:checked ~ .slider {
+    /* position: absolute; */
+    background-color: #706219;
+    border: 2px solid #ffcf01;
+    left: 0;
+  }
+  
+  
+.form__container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    /* margin-bottom: 1rem; */
+}
+
+.toggle__tag {
+    margin-left: 1rem;
+}
+
+.form__pending {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form__profit {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__loss {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.lot__container {
+    display: none;
+    margin-top: 1rem;
+
+}
+
+.text__label {
+    position: absolute;
+    right: 2rem;
+}
+
+.form__submit {
+    width: 100%;
+}
+
+.submit__button {
+    width: 100%;
+    height: 3rem;
+    outline: none;
+    border: 2px solid red;
+    /* background: ; */
+    color: inherit;
+    cursor: pointer;
+
+    background-color: #ccc; /* Change the background color to a tinted color */
+    color: #666; /* Change the text color */
+    /* cursor: not-allowed; */
+
+}
