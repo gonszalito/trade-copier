@@ -15,15 +15,17 @@
         <div class="panel">
             <form class="form" action="" method="POST" id="lotForm">
                 <div class="form__symbol">
-                    <select>
+
+                    <input type="text" id="symbolInput" >
+                    <!-- <select>
                         <option value="option1">Option 1</option>
                         <option value="option2">Option 2</option>
                         <option value="option3">Option 3</option>
-                    </select>
+                    </select> -->
                 </div>
                 <div class="form__option">
                     <label for="" class="card__sell" id="sellCard">
-                        <input type="radio" class="option__sell" name="transaction" value="sell" id="sellOption" onclick=""> 
+                        <input type="radio" class="option__sell" name="transactionOption" value="sell" id="sellOption" for="sellOption" onclick="" required> 
                         <div class="sell__input">
                             <span>
                                 Sell
@@ -36,7 +38,7 @@
                         </div>
                     </label>
                     <label class="card__buy" id="buyCard">
-                        <input type="radio" class="option__buy" name="transaction" value="buy" id="buyOption" onclick=""> 
+                        <input type="radio" class="option__buy" name="transactionOption" value="buy" id="buyOption" for="buyOption" onclick="" required> 
                         <div class="buy__input" >
                             <span>
                                 Buy
@@ -131,7 +133,7 @@
                 </div>    
 
                 <div class="form__submit">
-                    <input class="submit__button" type="submit" value="Confirm Sell Limit is 0.01 lots">
+                    <input class="submit__button" type="submit" id="submitButton" disabled value="Confirm Sell Limit is 0.01 lots">
                     
                 </div>
             </form>

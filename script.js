@@ -248,12 +248,11 @@ decrementLoss.addEventListener('click', function () {
 
 const lotForm = document.getElementById("lotForm");
 
-
 lotForm.addEventListener("submit", (e) => {
     e.preventDefault();
     
-    const symbol = document.querySelector(".form__symbol select").value;
-    const transaction = document.querySelector('input[name="transaction"]:checked').value;
+    const symbol = document.getElementById("symbolInput").value;
+    const transaction = document.querySelector('input[name="transactionOption"]:checked').value;
     const lot = document.getElementById("lotInput").value;
     const pendingLot = document.getElementById("pendingInput").value;
     const profitLot = document.getElementById("profitInput").value;
@@ -267,3 +266,50 @@ lotForm.addEventListener("submit", (e) => {
     console.log("Loss Lot:", lossLot);
 
 })
+
+const submitButton = document.getElementById("submitButton");
+const symbolInput = document.getElementById("symbolInput");
+const transactionOptions = document.querySelectorAll('input[name="transactionOption"]');
+
+const validateTransactionSelection = () => {
+    const selectedRadioButton = Array.from(transactionOption).find(rb => rb.checked);
+    if (selectedRadioButton) {
+        submitButton.removeAttribute("disabled");
+    } else {
+        submitButton.setAttribute("disabled", "disabled");
+    }
+}
+
+let isSymbolFilled = symbolInput.value.trim().length > 2;
+let isLotFilled = lotInput.value.trim() !== "";
+let isTransactionOptionSelected = Array.from(transactionOptions).some(rb => rb.checked);
+
+const checkFields = () => {
+  
+    isSymbolFilled = symbolInput.value.trim().length > 2;
+    isLotFilled = lotInput.value.trim() !== "";
+    isTransactionOptionSelected = Array.from(transactionOptions).some(rb => rb.checked);
+
+    console.log("initial");
+    console.log(isSymbolFilled);
+    console.log(isTransactionOptionSelected);
+    console.log(isLotFilled)
+
+    if (isSymbolFilled && isLotFilled && isTransactionOptionSelected) {
+        submitButton.removeAttribute("disabled");
+        if (submitButton.classList.contains("submit__button__disabled")) {
+            submitButton.classList.remove("submit__button__disabled");
+        }
+    } else {
+        submitButton.setAttribute("disabled", "disabled");
+        submitButton.classList.add("submit__button__disabled");
+    }
+}
+
+symbolInput.addEventListener("input", checkFields);
+lotInput.addEventListener("input", checkFields);
+sellCard.addEventListener("click", checkFields);
+buyCard.addEventListener("click", checkFields);
+
+
+checkFields();
