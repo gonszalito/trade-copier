@@ -1,8 +1,30 @@
-root {
+:root {
     --light: #d8dbe0;
     --dark: #28292c;
     --link: rgb(27, 129, 112);
     --link-hover: rgb(24, 94, 82);
+
+    --primary: #1c2227;
+    --secondary: rgb(50, 61, 72);
+    /* --red__primary: #4b2927; */
+    --highlight: rgb(60, 70, 80);
+
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    /* border: 1px solid green; */
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px rgb(50, 61, 72) inset;
+    transition: background-color 5000s ease-in-out 0s;
+  
 }
 
 * {
@@ -25,7 +47,7 @@ form > * {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color:bisque ;
+    background-color: var(--primary) ;
     padding: 1rem;
 }
 
@@ -104,6 +126,7 @@ form > * {
 .buy__input span {
     margin: 10px;
     margin-top: 20px;
+    color: white;
 }
 
 .card__buy input[type="radio"],
@@ -124,7 +147,7 @@ form > * {
 
 .form__symbol {
     width: 100%;
-    background-color: #f5f5dc;
+    background-color: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,6 +156,7 @@ form > * {
 
 .form__symbol input {
     background-color: transparent;
+    color: white;
     outline: none;
     border: none;
     box-shadow: none;
@@ -144,10 +168,17 @@ form > * {
     /* background-color: beige; */
 }
 
+.form__symbol input:blur {
+    background-color: transparent;
+}
+
+.form__lot label {
+    color: white;
+}
 
 .form__lot {
     width: 100%;
-    background-color: #f5f5dc;
+    background-color: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -156,6 +187,7 @@ form > * {
 
 .form__lot input {
     background-color: transparent;
+    color: white;
     outline: none;
     border: none;
     box-shadow: none;
@@ -181,12 +213,12 @@ form > * {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .lot__control button {
-    border: 1px solid #000;
     background-color: transparent;
+    color: white;
     width: 1.5rem; /* Set a fixed width for the buttons */
     height: 1.5rem; /* Set a fixed height for the buttons */
     /* padding: 5px; */
@@ -195,13 +227,27 @@ form > * {
     outline: none;
 }
 
+.increment__lot {
+    border-left: 1px solid var(--primary);
+    border-top: 1px solid var(--secondary);
+    border-right: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+}
+
+.decrement__lot {
+    border-left: 1px solid var(--primary);
+    border-top: 1px solid var(--primary);
+    border-right: 1px solid var(--primary);
+    border-bottom: 1px solid var(--secondary);
+}
+
 .lot__control button:hover {
-    background-color: #000;
+    background-color: var(--primary);
     color: #fff;
 }
 
 .form__lot:hover {
-    background-color: rgb(240, 240, 215);
+    background-color: var(--highlight)
 }
 
 .toggle__container {
@@ -278,6 +324,7 @@ form > * {
 
 .toggle__tag {
     margin-left: 1rem;
+    color: white;
 }
 
 .form__pending {
@@ -320,23 +367,26 @@ form > * {
     outline: none;
     /* border: 2px solid red; */
     /* background: ; */
-    color: inherit;
+    border: none;
+    color: white;
+    background-color: var(--secondary);
     cursor: pointer;
 }
 
 .submit__button__disabled {
-    background-color: #868a91; /* Change the background color to a tinted color */
-    color: #37424e; /* Change the text color */
+    background-color: rgb(50, 61, 72); /* Change the background color to a tinted color */
+    color: var(--primary); /* Change the text color */
     cursor: not-allowed;
-
 }
 
 .profit__info {
     padding-top: 10px;
     display: none;
+    color: white;
 }
 
 .loss__info {
     padding-top: 10px;
     display: none;
+    color: white;
 }

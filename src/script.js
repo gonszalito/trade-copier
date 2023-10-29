@@ -57,6 +57,8 @@ incrementLot.addEventListener('click', function () {
     const currentValue = parseFloat(lotInput.value);
     const newValue = currentValue + 0.01;
     lotInput.value = newValue.toFixed(2);
+    updateLossInfo();
+    updateProfitInfo();
 });
 
 decrementLot.addEventListener('click', function () {
@@ -65,6 +67,8 @@ decrementLot.addEventListener('click', function () {
         const newValue = currentValue - 0.01;
         lotInput.value = newValue.toFixed(2);
     }
+    updateLossInfo();
+    updateProfitInfo();
 });
 
 //
@@ -96,26 +100,50 @@ const decrementPending = document.getElementById('decrementPending');
 //     }
 // });
 
+// pendingInput.addEventListener('input', function () {
+//     let inputValue = pendingInput.value;
+
+//     inputValue = inputValue.replace(/[^0-9.]/g, '');
+
+//     const parts = inputValue.split('.');
+    
+//     if (parts.length > 5) {
+//         parts[1] = parts[1].slice(0, 6);
+//     }
+
+//     if (parts[1] && parts[1].length > 6) {
+//         parts[1] = parts[1].slice(0, 6);
+//     }
+
+//     // Combine the parts and round to 6 decimal places
+//     const roundedValue = Number(parts.join('.')).toFixed(5);
+
+//     pendingInput.value = roundedValue;
+// });
+
 pendingInput.addEventListener('input', function () {
     let inputValue = pendingInput.value;
-
+  
+    // Remove any characters that are not digits or a dot
     inputValue = inputValue.replace(/[^0-9.]/g, '');
-
+  
     const parts = inputValue.split('.');
     
-    if (parts.length > 5) {
-        parts[1] = parts[1].slice(0, 6);
+    if (inputValue && parts[1] && parts[0].length + parts[1].length > 6 ) {
+        parts[1] = parts[1].slice(0, 6 - parts[0].length);
     }
-
+    // Ensure there are at most 6 digits, including decimal places
+    if (parts[0] && parts[0].length > 6) {
+      parts[0] = parts[0].slice(0, 6);
+    }
+  
     if (parts[1] && parts[1].length > 6) {
-        parts[1] = parts[1].slice(0, 6);
+      parts[1] = parts[1].slice(0, 6);
     }
-
-    // Combine the parts and round to 6 decimal places
-    const roundedValue = Number(parts.join('.')).toFixed(5);
-
-    pendingInput.value = roundedValue;
-});
+  
+    // Join the parts back together and update the input value
+    pendingInput.value = parts.join('.');
+  })
 
 incrementPending.addEventListener('click', function () {
     const currentValue = parseFloat(pendingInput.value);
@@ -174,24 +202,30 @@ lotInput.addEventListener('input', updateProfitInfo);
 //     }
 // });
 
+
 profitInput.addEventListener('input', function () {
     let inputValue = profitInput.value;
-
+  
+    // Remove any characters that are not digits or a dot
     inputValue = inputValue.replace(/[^0-9.]/g, '');
-
+  
     const parts = inputValue.split('.');
     
-    if (parts.length > 6) {
-        parts[1] = parts[1].slice(0, 6);
+    if (inputValue && parts[1] && parts[0].length + parts[1].length > 6 ) {
+        parts[1] = parts[1].slice(0, 6 - parts[0].length);
     }
-
+    // Ensure there are at most 6 digits, including decimal places
+    if (parts[0] && parts[0].length > 6) {
+      parts[0] = parts[0].slice(0, 6);
+    }
+  
     if (parts[1] && parts[1].length > 6) {
-        parts[1] = parts[1].slice(0, 6);
+      parts[1] = parts[1].slice(0, 6);
     }
-
+  
+    // Join the parts back together and update the input value
     profitInput.value = parts.join('.');
-});
-
+  })
 incrementProfit.addEventListener('click', function () {
     const currentValue = parseFloat(profitInput.value);
     const newValue = currentValue + 0.0001; 
@@ -258,21 +292,27 @@ lotInput.addEventListener('input', updateLossInfo);
 
 lossInput.addEventListener('input', function () {
     let inputValue = lossInput.value;
-
+  
+    // Remove any characters that are not digits or a dot
     inputValue = inputValue.replace(/[^0-9.]/g, '');
-
+  
     const parts = inputValue.split('.');
     
-    if (parts.length > 6) {
-        parts[1] = parts[1].slice(0, 6);
+    if (inputValue && parts[1] && parts[0].length + parts[1].length > 6 ) {
+        parts[1] = parts[1].slice(0, 6 - parts[0].length);
     }
-
+    // Ensure there are at most 6 digits, including decimal places
+    if (parts[0] && parts[0].length > 6) {
+      parts[0] = parts[0].slice(0, 6);
+    }
+  
     if (parts[1] && parts[1].length > 6) {
-        parts[1] = parts[1].slice(0, 6);
+      parts[1] = parts[1].slice(0, 6);
     }
-
+  
+    // Join the parts back together and update the input value
     lossInput.value = parts.join('.');
-});
+  })
 
 incrementLoss.addEventListener('click', function () {
     
