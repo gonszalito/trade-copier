@@ -36,7 +36,7 @@ const sendOrder = (formData) => {
 
     const pythonExecutable = './.venv/Scripts/python.exe';
 
-    const pythonProcess = spawn(pythonExecutable, ['./test.py', functionName, jsonData]);
+    const pythonProcess = spawn(pythonExecutable, ['./main.py', functionName, jsonData]);
 
     pythonProcess.stdout.on('data', (data) => {
         const pythonOutput = data.toString(); // Convert the buffer to a string
